@@ -1,29 +1,29 @@
-# 🛵 Hyperlocal Delivery Delay Predictor
+# Hyperlocal Delivery Delay Predictor
 
 > An end-to-end Machine Learning system that predicts food delivery delays in real time — inspired by Swiggy & Zomato operations infrastructure.
 
-![Dashboard](dashboard_preview.png)
+![Dashboard](Executive Overview.jpg)
 
 ---
 
-# 📊 Project Results
+# Project Results
 
 | Model | RMSE | MAE | R² | Improvement |
 |---|---|---|---|---|
 | Linear Regression | 6.72 | 5.36 | 0.48 | Baseline |
 | Random Forest | 4.09 | 3.23 | 0.81 | +39% |
-| **XGBoost ⭐** | **3.99** | **3.17** | **0.82** | **+41%** |
+| **XGBoost ** | **3.99** | **3.17** | **0.82** | **+41%** |
 | LSTM | 5.64 | 4.21 | 0.64 | +16% |
 | XGBoost + LSTM | 4.33 | 3.38 | 0.79 | +36% |
 
-### 🎯 Headline Metric
+### Headline Metric
 XGBoost achieved an RMSE of **3.99 minutes**, improving prediction accuracy by **41% over baseline models**.
 
 This means delivery ETAs are accurate within approximately **±4 minutes** on average.
 
 ---
 
-# 🎯 Problem Statements Solved
+# Problem Statements Solved
 
 | Question | Method | Key Finding |
 |---|---|---|
@@ -36,12 +36,10 @@ This means delivery ETAs are accurate within approximately **±4 minutes** on av
 
 ---
 
-# 🏗️ System Architecture
+# System Architecture
 
 ```text
 Raw Data (Kaggle + Weather API)
-        ↓
-AWS S3 Data Lake
         ↓
 SQL + Pandas Feature Engineering
         ↓
@@ -60,7 +58,7 @@ Power BI Dashboard
 
 ---
 
-# 🔍 Key Insights from SHAP Analysis
+# Key Insights from SHAP Analysis
 
 - Delivery rider age showed the highest influence on ETA predictions.
 - Distance and traffic density were equally important factors.
@@ -70,7 +68,7 @@ Power BI Dashboard
 
 ---
 
-# 📁 Project Structure
+# Project Structure
 
 ```text
 delivery-delay-predictor/
@@ -82,28 +80,21 @@ delivery-delay-predictor/
 │   ├── 04_shap_explainability.ipynb
 │   └── 05_live_prediction.ipynb
 │
-├── models/
-│   ├── xgboost_model.pkl
-│   └── lstm_model.h5
-│
 ├── dashboard/
 │   └── delivery_delay.pbix
 │
 ├── data/
-│   ├── raw/
-│   ├── processed/
-│   └── external/
+│   ├──sample_data.csv
 │
 └── README.md
 ```
 
 ---
 
-# 🛠️ Tech Stack
+# Tech Stack
 
 | Layer | Tools Used |
 |---|---|
-| Data Storage | AWS S3, PostgreSQL |
 | Data Processing | Python, Pandas, NumPy, SQL |
 | Machine Learning | Scikit-learn, XGBoost, TensorFlow |
 | Explainability | SHAP |
@@ -113,21 +104,21 @@ delivery-delay-predictor/
 
 ---
 
-# 🚀 How to Run the Project
+# How to Run the Project
 
-## 1️⃣ Clone Repository
+## 1. Clone Repository
 
 ```bash
 git clone https://github.com/YOUR_USERNAME/delivery-delay-predictor.git
 ```
 
-## 2️⃣ Install Dependencies
+## 2. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 3️⃣ Run Jupyter/Colab Notebooks
+## 3. Run Jupyter/Colab Notebooks
 
 Run notebooks in this order:
 
@@ -135,13 +126,13 @@ Run notebooks in this order:
 01 → 02 → 03 → 04 → 05
 ```
 
-## 4️⃣ Start FastAPI Server
+## 4. Start FastAPI Server
 
 ```bash
 uvicorn src.api:app --reload
 ```
 
-## 5️⃣ Test Prediction Endpoint
+## 5. Test Prediction Endpoint
 
 ```bash
 curl -X POST http://localhost:8000/predict \
@@ -173,7 +164,7 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-# 📈 Power BI Dashboard
+# Power BI Dashboard
 
 ### Dashboard Pages
 
@@ -194,7 +185,7 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-# 💼 Business Impact
+# Business Impact
 
 - Reduced ETA uncertainty from ±8 min to ±4 min
 - Improved on-time prediction accuracy to 82.7%
@@ -204,20 +195,22 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-# 📦 Dataset
+# Dataset
 
 ### Primary Dataset
 Food Delivery Dataset from Kaggle
+Zomato Dataset from kaggle 
 
 ### Additional Data
 - Open-Meteo Weather API
 - 44,593 delivery records
 - Indian metropolitan, urban, and semi-urban cities
+- Holidays Dataset (manually prepared)
 
 ---
 
-# 👨‍💻 Author
+# Author
 
-**Your Name**
+**KUMKUM LODHI**
 
 Data Science • Machine Learning • Python • SQL • Power BI
