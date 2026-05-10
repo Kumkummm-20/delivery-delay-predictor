@@ -1,25 +1,32 @@
-# Hyperlocal Delivery Delay Predictor
+# 🛵 Hyperlocal Delivery Delay Predictor
 
 > An end-to-end Machine Learning system that predicts food delivery delays in real time — inspired by Swiggy & Zomato operations infrastructure.
 
-# Project Results
+![Dashboard](dashboard_preview.png)
+
+---
+
+# 📊 Project Results
 
 | Model | RMSE | MAE | R² | Improvement |
+|---|---|---|---|---|
 | Linear Regression | 6.72 | 5.36 | 0.48 | Baseline |
 | Random Forest | 4.09 | 3.23 | 0.81 | +39% |
-| **XGBoost** | **3.99** | **3.17** | **0.82** | **+41%** |
+| **XGBoost ⭐** | **3.99** | **3.17** | **0.82** | **+41%** |
 | LSTM | 5.64 | 4.21 | 0.64 | +16% |
 | XGBoost + LSTM | 4.33 | 3.38 | 0.79 | +36% |
 
-### Headline Metric
+### 🎯 Headline Metric
 XGBoost achieved an RMSE of **3.99 minutes**, improving prediction accuracy by **41% over baseline models**.
 
 This means delivery ETAs are accurate within approximately **±4 minutes** on average.
 
+---
+
 # 🎯 Problem Statements Solved
 
 | Question | Method | Key Finding |
-
+|---|---|---|
 | Can delays be predicted before pickup? | XGBoost Classification | 82.7% prediction accuracy |
 | How much does rain increase delivery time? | EDA + Regression | Stormy weather causes highest delays |
 | Which feature matters most? | SHAP Analysis | Delivery rider age had highest impact |
@@ -29,9 +36,12 @@ This means delivery ETAs are accurate within approximately **±4 minutes** on av
 
 ---
 
-# System Architecture
+# 🏗️ System Architecture
 
+```text
 Raw Data (Kaggle + Weather API)
+        ↓
+AWS S3 Data Lake
         ↓
 SQL + Pandas Feature Engineering
         ↓
@@ -46,10 +56,11 @@ SHAP Explainability Layer
 FastAPI REST API
         ↓
 Power BI Dashboard
+```
 
 ---
 
-# Key Insights from SHAP Analysis
+# 🔍 Key Insights from SHAP Analysis
 
 - Delivery rider age showed the highest influence on ETA predictions.
 - Distance and traffic density were equally important factors.
@@ -59,8 +70,9 @@ Power BI Dashboard
 
 ---
 
-# Project Structure
+# 📁 Project Structure
 
+```text
 delivery-delay-predictor/
 │
 ├── notebooks/
@@ -70,23 +82,32 @@ delivery-delay-predictor/
 │   ├── 04_shap_explainability.ipynb
 │   └── 05_live_prediction.ipynb
 │
+├── models/
+│   ├── xgboost_model.pkl
+│   └── lstm_model.h5
+│
 ├── dashboard/
 │   └── delivery_delay.pbix
 │
 ├── data/
-│   ├── sample_data.csv
+│   ├── raw/
+│   ├── processed/
+│   └── external/
 │
 └── README.md
+```
 
 ---
 
 # 🛠️ Tech Stack
 
 | Layer | Tools Used |
+|---|---|
+| Data Storage | AWS S3, PostgreSQL |
 | Data Processing | Python, Pandas, NumPy, SQL |
 | Machine Learning | Scikit-learn, XGBoost, TensorFlow |
 | Explainability | SHAP |
-| API Development | FastAPI |
+| API Development | FastAPI, Uvicorn |
 | Dashboard | Power BI |
 | Visualization | Matplotlib, Seaborn |
 
@@ -96,26 +117,33 @@ delivery-delay-predictor/
 
 ## 1️⃣ Clone Repository
 
-git clone https://github.com/Kumkummm-20/delivery-delay-predictor.git
-
+```bash
+git clone https://github.com/YOUR_USERNAME/delivery-delay-predictor.git
+```
 
 ## 2️⃣ Install Dependencies
 
+```bash
 pip install -r requirements.txt
+```
 
-## 3️⃣ Run Colab Notebooks
+## 3️⃣ Run Jupyter/Colab Notebooks
 
 Run notebooks in this order:
 
+```text
 01 → 02 → 03 → 04 → 05
-
+```
 
 ## 4️⃣ Start FastAPI Server
 
+```bash
 uvicorn src.api:app --reload
+```
 
 ## 5️⃣ Test Prediction Endpoint
 
+```bash
 curl -X POST http://localhost:8000/predict \
 -H "Content-Type: application/json" \
 -d '{
@@ -133,17 +161,19 @@ curl -X POST http://localhost:8000/predict \
   "city_enc": 0,
   "vehicle_enc": 0
 }'
+```
 
 ### Example Response
 
+```json
 {
   "predicted_eta_minutes": 29.4
 }
-
+```
 
 ---
 
-# Power BI Dashboard
+# 📈 Power BI Dashboard
 
 ### Dashboard Pages
 
@@ -164,7 +194,7 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-# Business Impact
+# 💼 Business Impact
 
 - Reduced ETA uncertainty from ±8 min to ±4 min
 - Improved on-time prediction accuracy to 82.7%
@@ -174,7 +204,7 @@ curl -X POST http://localhost:8000/predict \
 
 ---
 
-# Dataset
+# 📦 Dataset
 
 ### Primary Dataset
 Food Delivery Dataset from Kaggle
@@ -183,12 +213,11 @@ Food Delivery Dataset from Kaggle
 - Open-Meteo Weather API
 - 44,593 delivery records
 - Indian metropolitan, urban, and semi-urban cities
-- Holidays datset (prepared manually)
 
 ---
 
-# Author
+# 👨‍💻 Author
 
-**KUMKUM LODHI**
+**Your Name**
 
 Data Science • Machine Learning • Python • SQL • Power BI
