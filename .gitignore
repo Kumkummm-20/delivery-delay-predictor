@@ -1,0 +1,13 @@
+models/
+*.pkl
+*.h5
+data/raw/
+data/processed/
+powerbi_master.csv
+.env
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+*.zip
+*.csv
